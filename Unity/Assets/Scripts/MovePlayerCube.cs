@@ -8,6 +8,9 @@ public class MovePlayerCube : MonoBehaviour {
 	private float newY;
 	private float newZ;
 
+	// speed of finger movement relative to cube movement
+	public float speed;
+
 	// keeping track of the current position of the player cube
 	private Vector3 currentPosition;
 
@@ -20,6 +23,8 @@ public class MovePlayerCube : MonoBehaviour {
 		newY = 0.0f;
 		newZ = 0.0f;
 
+		speed = 0.1f;
+
 		currentPosition = new Vector3 (0.0f, 0.0f, 0.0f);
 
 		mouseDown = false;
@@ -31,12 +36,14 @@ public class MovePlayerCube : MonoBehaviour {
 			// a finger is on the screen
 			Vector2 touchMovement = Input.GetTouch(0).deltaPosition;
 
-			currentPosition = this.transform.position;
-			newX = currentPosition.x + touchMovement.x;
-			newY = currentPosition.y + touchMovement.y;
-			newZ = currentPosition.z;
+			//currentPosition = this.transform.position;
+			//newX = currentPosition.x + touchMovement.x;
+			//newY = currentPosition.y + touchMovement.y;
+			//newZ = currentPosition.z;
 
-			this.transform.position = new Vector3(newX, newY, newZ);
+			//this.transform.position = new Vector3(newX, newY, newZ);
+		
+			transform.Translate(-touchMovement.x * speed, -touchMovement.y * speed, 0);
 		}
 
 		// for testing since it's easier than putting it on the phone
@@ -57,7 +64,7 @@ public class MovePlayerCube : MonoBehaviour {
 			newY = currentPosition.y + yMovement;
 			newZ = currentPosition.z;
 			
-			this.transform.position = new Vector3(newX, newY, newZ);
+			transform.position = new Vector3(newX, newY, newZ);
 		}
 	}
 }
