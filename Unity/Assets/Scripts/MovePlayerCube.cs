@@ -7,10 +7,7 @@ public class MovePlayerCube : MonoBehaviour {
 	private float newX;
 	private float newY;
 	private float newZ;
-
-	// speed of finger movement relative to cube movement
-	public float speed;
-
+	
 	// keeping track of the current position of the player cube
 	private Vector3 currentPosition;
 
@@ -23,8 +20,6 @@ public class MovePlayerCube : MonoBehaviour {
 		newY = 0.0f;
 		newZ = 0.0f;
 
-		speed = 0.1f;
-
 		currentPosition = new Vector3 (0.0f, 0.0f, 0.0f);
 
 		mouseDown = false;
@@ -36,15 +31,20 @@ public class MovePlayerCube : MonoBehaviour {
 			// a finger is on the screen
 			Vector2 touchMovement = Input.GetTouch(0).deltaPosition;
 
+			Vector3 touchPos = new Vector3(touchMovement.x, touchMovement.y, Camera.main.nearClipPlane);
+			Vector3 worldPos = Camera.main.ScreenToWorldPoint(touchPos);
+
 			//currentPosition = this.transform.position;
 			//newX = currentPosition.x + touchMovement.x;
 			//newY = currentPosition.y + touchMovement.y;
 			//newZ = currentPosition.z;
-
+			
 			//this.transform.position = new Vector3(newX, newY, newZ);
-		
-			transform.Translate(-touchMovement.x * speed, -touchMovement.y * speed, 0);
+
+			transform.position = new Vector3(worldPos.x, worldPos.y + 1.0f, 0.0f);
 		}
+
+
 
 		// for testing since it's easier than putting it on the phone
 		if (Input.GetMouseButtonDown(0)) {
