@@ -30,18 +30,19 @@ public class MovePlayerCube : MonoBehaviour {
 		if (Input.touchCount > 0) {
 			// a finger is on the screen
 			Vector2 touchMovement = Input.GetTouch(0).deltaPosition;
+			//Vector3 touchPos = new Vector3(touchMovement.x, touchMovement.y, Camera.main.nearClipPlane);
+			//Vector3 worldPos = Camera.main.ScreenToWorldPoint(touchPos);
 
-			Vector3 touchPos = new Vector3(touchMovement.x, touchMovement.y, Camera.main.nearClipPlane);
-			Vector3 worldPos = Camera.main.ScreenToWorldPoint(touchPos);
-
-			//currentPosition = this.transform.position;
-			//newX = currentPosition.x + touchMovement.x;
-			//newY = currentPosition.y + touchMovement.y;
-			//newZ = currentPosition.z;
+			currentPosition = this.transform.position;
+			newX = currentPosition.x + (touchMovement.x * 0.1f);
+			newY = currentPosition.y + (touchMovement.y * 0.1f);
+			newZ = currentPosition.z;
 			
-			//this.transform.position = new Vector3(newX, newY, newZ);
+			this.transform.position = new Vector3(newX, newY, newZ);
 
-			transform.position = new Vector3(worldPos.x, worldPos.y + 1.0f, 0.0f);
+			//Vector3 touchPos = new Vector3(touchMovement.x, touchMovement.y, Camera.main.nearClipPlane);
+			//Vector3 worldPos = Camera.main.ScreenToWorldPoint(touchPos);
+			//transform.position = new Vector3(worldPos.x, worldPos.y + 1.0f, 0.0f);
 		}
 
 
