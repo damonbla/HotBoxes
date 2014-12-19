@@ -233,6 +233,8 @@ GameObject:
   - 65: {fileID: 1317516320}
   - 23: {fileID: 1317516319}
   - 54: {fileID: 1317516318}
+  - 114: {fileID: 1317516323}
+  - 114: {fileID: 1317516324}
   m_Layer: 0
   m_Name: Dropping Box
   m_TagString: Untagged
@@ -301,11 +303,37 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1317516317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.78432655, z: 0}
+  m_LocalPosition: {x: 0, y: 4.6152153, z: 0}
   m_LocalScale: {x: .800000012, y: .800000012, z: .800000012}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1317516323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317516317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b8dfefd7a0245518417b895d428410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1317516324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317516317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be39ba82d02524fa6819fcc2976ef8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  skinWidth: 1
 --- !u!1 &2031902144
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +347,7 @@ GameObject:
   - 23: {fileID: 2031902145}
   - 54: {fileID: 2031902149}
   - 114: {fileID: 2031902150}
+  - 114: {fileID: 2031902151}
   m_Layer: 0
   m_Name: Player Cube
   m_TagString: Untagged
@@ -387,7 +416,7 @@ Rigidbody:
   m_Mass: 10
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 120
@@ -403,3 +432,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b2b31764eaf415e8dbe8c7aaf6f543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2031902151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2031902144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be39ba82d02524fa6819fcc2976ef8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  skinWidth: 1
