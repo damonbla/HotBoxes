@@ -5,10 +5,14 @@ public class BoxDrop : MonoBehaviour {
 
 	public Color boxColor;
 	public float colorChangeAmount;
+	bool onPlayer;
 
 	// Use this for initialization
 	void Start () {
 		boxColor = new Color(1.0f, 1.0f, 1.0f);
+		renderer.material.color = boxColor;
+
+		onPlayer = false;
 	}
 	
 	// Update is called once per frame
@@ -24,23 +28,29 @@ public class BoxDrop : MonoBehaviour {
 			transform.position = new Vector3(0.0f, 10.0f, 0.0f);
 
 			renderer.material.color = new Color(1.0f, 1.0f, 1.0f);
-		}		
+		}
+
+		if (onPlayer) {
+			// lose some green and blue, making the box redder
+			boxColor.g -= colorChangeAmount;
+			boxColor.b -= colorChangeAmount;
+
+			renderer.material.color = boxColor;
+		} else {
+			// lose some green and blue, making the box redder
+			boxColor.g += colorChangeAmount;
+			boxColor.b += colorChangeAmount;
+
+			renderer.material.color = boxColor;
+		}
 	}
 
 	// if the box is resting on the player's cube, start making it more red
-	void OnCollisionStay() {
-		// lose some green and blue, making the box redder
-		boxColor.g -= colorChangeAmount;
-		boxColor.b -= colorChangeAmount;
-
-		renderer.material.color = boxColor;
+	void OnCollisionStart() {
+		onPlayer = true;
 	}
 
 	void OnCollisionExit() {
-		// lose some green and blue, making the box redder
-		boxColor.g += colorChangeAmount;
-		boxColor.b += colorChangeAmount;
-
-		renderer.material.color = boxColor;		
+		onPlayer = false;
 	}
 }
