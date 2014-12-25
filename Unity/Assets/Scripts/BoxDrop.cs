@@ -30,23 +30,30 @@ public class BoxDrop : MonoBehaviour {
 			renderer.material.color = new Color(1.0f, 1.0f, 1.0f);
 		}
 
+
 		if (onPlayer) {
 			// lose some green and blue, making the box redder
-			boxColor.g -= colorChangeAmount;
-			boxColor.b -= colorChangeAmount;
-
+			if (boxColor.g > 0.0) {
+				boxColor.g -= colorChangeAmount;
+			}
+			if (boxColor.b > 0.0) {
+				boxColor.b -= colorChangeAmount;
+			}
 			renderer.material.color = boxColor;
 		} else {
-			// lose some green and blue, making the box redder
-			boxColor.g += colorChangeAmount;
-			boxColor.b += colorChangeAmount;
-
+			// gain some green and blue, making the box less red
+			if (boxColor.g < 1.0) {
+				boxColor.g += colorChangeAmount;
+			}
+			if (boxColor.b < 1.0) {
+				boxColor.b += colorChangeAmount;
+			}
 			renderer.material.color = boxColor;
 		}
 	}
 
 	// if the box is resting on the player's cube, start making it more red
-	void OnCollisionStart() {
+	void OnCollisionEnter() {
 		onPlayer = true;
 	}
 
