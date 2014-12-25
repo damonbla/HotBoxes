@@ -34,11 +34,13 @@ public class MovePlayerCube : MonoBehaviour {
 			//Vector3 worldPos = Camera.main.ScreenToWorldPoint(touchPos);
 
 			currentPosition = this.transform.position;
-			newX = currentPosition.x + (touchMovement.x * 0.1f);
-			newY = currentPosition.y + (touchMovement.y * 0.1f);
+			newX = currentPosition.x + (touchMovement.x * 0.011f);
+			newY = currentPosition.y + (touchMovement.y * 0.011f);
 			newZ = currentPosition.z;
 			
-			this.transform.position = new Vector3(newX, newY, newZ);
+			if (newX > -3.9f && newX < 3.9f) {
+				this.transform.position = new Vector3(newX, newY, newZ);
+			}
 
 			//Vector3 touchPos = new Vector3(touchMovement.x, touchMovement.y, Camera.main.nearClipPlane);
 			//Vector3 worldPos = Camera.main.ScreenToWorldPoint(touchPos);
@@ -65,7 +67,9 @@ public class MovePlayerCube : MonoBehaviour {
 			newY = currentPosition.y + yMovement;
 			newZ = currentPosition.z;
 			
-			transform.position = new Vector3(newX, newY, newZ);
+			if (newX > -3.9f && newX < 3.9f) {
+				transform.position = new Vector3(newX, newY, newZ);
+			}
 		}
 	}
 }
