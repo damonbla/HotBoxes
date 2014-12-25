@@ -16,4 +16,9 @@ public class StarCube : MonoBehaviour {
 
 		transform.Rotate(new Vector3(rotateAmount, -rotateAmount, rotateAmount * 0.5f));
 	}
+
+	// this star was hit by the falling cube
+	void OnTriggerEnter() {
+		
+	}
 }
