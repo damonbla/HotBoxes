@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BoxDrop.cs" />
      <Compile Include="Assets\Scripts\MovePlayerCube.cs" />
+     <Compile Include="Assets\Scripts\StarCube.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
