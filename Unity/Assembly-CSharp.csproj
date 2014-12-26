@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BackgroundCubeMove.cs" />
      <Compile Include="Assets\Scripts\BoxDrop.cs" />
      <Compile Include="Assets\Scripts\GameplayScript.cs" />
      <Compile Include="Assets\Scripts\MovePlayerCube.cs" />
