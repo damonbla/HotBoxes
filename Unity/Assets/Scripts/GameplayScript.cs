@@ -7,8 +7,16 @@ public class GameplayScript : MonoBehaviour {
 	public GameObject backgroundCube;
 	private GameObject[,] backgroundCubes = new GameObject[7,11];
 
+	private VariableControl variables;
+
 	// Use this for initialization
 	void Start () {
+		// load the variables
+        variables = GameObject.Find("VariableControl").GetComponent<VariableControl>();
+
+        // this will be loaded with a level
+        variables.totalStarCubes = 2;
+
 		// instantiate all the background cubes
 		for (int x = 0; x < 7; x++) {
 			for (int y = 0; y < 11; y++) {

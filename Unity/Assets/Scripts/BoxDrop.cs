@@ -9,7 +9,7 @@ public class BoxDrop : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		boxColor = new Color(1.0f, 1.0f, 1.0f);
+		// color set in UI
 		renderer.material.color = boxColor;
 
 		onPlayer = false;
@@ -23,9 +23,9 @@ public class BoxDrop : MonoBehaviour {
 			rigidbody.velocity = Vector3.zero;
 			rigidbody.angularVelocity = Vector3.zero;
 
-			// reset psotion and rotation
+			// reset position and rotation
 			transform.rotation = Quaternion.identity;
-			transform.position = new Vector3(0.0f, 10.0f, 0.0f);
+			transform.position = new Vector3(0.0f, 12.0f, 0.0f);
 
 			renderer.material.color = new Color(1.0f, 1.0f, 1.0f);
 		}

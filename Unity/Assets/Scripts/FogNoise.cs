@@ -25,7 +25,7 @@ public class FogNoise : MonoBehaviour {
                 float xCoord = xOrg + x / noiseTex.width * scale + Time.time * 0.2f;
                 float yCoord = yOrg + y / noiseTex.height * scale - Time.time * 0.2f;
                 float sample = Mathf.PerlinNoise(xCoord, yCoord);
-                pix[(int)y * noiseTex.width + (int)x] = new Color(sample - 0.3f, sample, sample - 0.2f, sample - 0.2f);
+                pix[(int)y * noiseTex.width + (int)x] = new Color(sample - 0.4f, sample - 0.2f, sample - 0.3f, sample - 0.2f);
                 x++;
             }
             y++;

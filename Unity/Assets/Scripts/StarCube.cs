@@ -5,9 +5,12 @@ public class StarCube : MonoBehaviour {
 
 	public float rotateSpeed;
 
+	private VariableControl variables;
+
 	// Use this for initialization
 	void Start () {
-	
+		// load the variables
+        variables = GameObject.Find("VariableControl").GetComponent<VariableControl>();
 	}
 	
 	// Update is called once per frame
@@ -19,6 +22,11 @@ public class StarCube : MonoBehaviour {
 
 	// this star was hit by the falling cube
 	void OnTriggerEnter() {
-		
+		// for now make it disappear
+		gameObject.SetActive(false);
+
+		variables.totalStarCubes--;
+
+		Debug.Log("total star cubes = " + variables.totalStarCubes);
 	}
 }

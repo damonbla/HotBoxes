@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\GameplayScript.cs" />
      <Compile Include="Assets\Scripts\MovePlayerCube.cs" />
      <Compile Include="Assets\Scripts\StarCube.cs" />
+     <Compile Include="Assets\Scripts\VariableControl.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
