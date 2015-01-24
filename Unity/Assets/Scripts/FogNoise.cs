@@ -22,10 +22,10 @@ public class FogNoise : MonoBehaviour {
         while (y < noiseTex.height) {
             float x = 0.0F;
             while (x < noiseTex.width) {
-                float xCoord = xOrg + x / noiseTex.width * scale + Time.time * 0.3f;
-                float yCoord = yOrg + y / noiseTex.height * scale - Time.time * 0.3f;
+                float xCoord = xOrg + x / noiseTex.width * scale + Time.time * 0.2f;
+                float yCoord = yOrg + y / noiseTex.height * scale - Time.time * 0.2f;
                 float sample = Mathf.PerlinNoise(xCoord, yCoord);
-                pix[(int)y * noiseTex.width + (int)x] = new Color(sample - 0.3f, sample, sample - 0.2f, sample);
+                pix[(int)y * noiseTex.width + (int)x] = new Color(sample - 0.3f, sample, sample - 0.2f, sample - 0.2f);
                 x++;
             }
             y++;
