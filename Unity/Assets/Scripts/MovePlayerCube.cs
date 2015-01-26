@@ -27,6 +27,8 @@ public class MovePlayerCube : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// when the animation for bringing the player cube up from the bottom is done,
+		// disable the animator (otherwise you can't move the cube)
 		if (Time.time > 1.0f) {
 			gameObject.GetComponent<Animator>().enabled = false;
 		}
@@ -40,12 +42,16 @@ public class MovePlayerCube : MonoBehaviour {
 			newY = currentPosition.y + (touchMovement.y * 0.011f);
 			newZ = currentPosition.z;
 			
-			if (newX > -3.9f && newX < 3.9f) {
+			// don't go off the sides of the screen or above the bar
+			if (newX > -3.9f && newX < 3.9f && newY < -1.3f) {
 				this.transform.position = new Vector3(newX, newY, newZ);
 			}
 		}
 
-		// for testing since it's easier than putting it on the phone
+
+
+
+		// for testing since it's quicker than putting it on the phone
 		if (Input.GetMouseButtonDown(0)) {
 			mouseDown = true;
 		}
@@ -63,7 +69,8 @@ public class MovePlayerCube : MonoBehaviour {
 			newY = currentPosition.y + yMovement;
 			newZ = currentPosition.z;
 			
-			if (newX > -3.9f && newX < 3.9f) {
+			// don't go off the sides of the screen or above the bar
+			if (newX > -3.9f && newX < 3.9f && newY < -1.3f) {
 				transform.position = new Vector3(newX, newY, newZ);
 			}
 		}
