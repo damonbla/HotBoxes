@@ -27,6 +27,10 @@ public class MovePlayerCube : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Time.time > 1.0f) {
+			gameObject.GetComponent<Animator>().enabled = false;
+		}
+
 		if (Input.touchCount > 0) {
 			// a finger is on the screen
 			Vector2 touchMovement = Input.GetTouch(0).deltaPosition;
@@ -40,8 +44,6 @@ public class MovePlayerCube : MonoBehaviour {
 				this.transform.position = new Vector3(newX, newY, newZ);
 			}
 		}
-
-
 
 		// for testing since it's easier than putting it on the phone
 		if (Input.GetMouseButtonDown(0)) {
