@@ -23,7 +23,10 @@ public class StarCube : MonoBehaviour {
 	// this star was hit by the falling cube
 	void OnTriggerEnter() {
 		// for now make it disappear
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
+
+		// play the blow up animation
+		gameObject.GetComponent<Animator>().enabled = true;
 
 		variables.totalStarCubes--;
 
