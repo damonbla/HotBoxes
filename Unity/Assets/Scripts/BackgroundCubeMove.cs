@@ -5,6 +5,7 @@ public class BackgroundCubeMove : MonoBehaviour {
 
 	private float startZ;
 	public float timeAdjustment;
+	public float zAdjustment;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,6 @@ public class BackgroundCubeMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = new Vector3(transform.position.x, transform.position.y, 5.0f - startZ * Mathf.Sin(Time.time + timeAdjustment));
+		transform.position = new Vector3(transform.position.x, transform.position.y, 5.0f - startZ * Mathf.Sin(Time.time + timeAdjustment) + zAdjustment);
 	}
 }
