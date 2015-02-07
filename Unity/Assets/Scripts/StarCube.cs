@@ -7,10 +7,14 @@ public class StarCube : MonoBehaviour {
 
 	private VariableControl variables;
 
+	private bool starDone;
+
 	// Use this for initialization
 	void Start () {
 		// load the variables
         variables = GameObject.Find("VariableControl").GetComponent<VariableControl>();
+	
+        starDone = false;
 	}
 	
 	// Update is called once per frame
@@ -22,14 +26,16 @@ public class StarCube : MonoBehaviour {
 
 	// this star was hit by the falling cube
 	void OnTriggerEnter() {
-		// for now make it disappear
-		//gameObject.SetActive(false);
 
-		// play the blow up animation
-		gameObject.GetComponent<Animator>().enabled = true;
+		if (!starDone) {
+			// play the blow up animation
+			gameObject.GetComponent<Animator>().enabled = true;
 
-		variables.totalStarCubes--;
+			variables.totalStarCubes--;
 
-		Debug.Log("total star cubes = " + variables.totalStarCubes);
+			Debug.Log("total star cubes = " + variables.totalStarCubes);
+
+			starDone = true;
+		}
 	}
 }
