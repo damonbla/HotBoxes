@@ -14,6 +14,8 @@ public class MovePlayerCube : MonoBehaviour {
 	// is the mouse button down?
 	private bool mouseDown;
 
+	private float timeHere;
+
 	// Use this for initialization
 	void Start () {
 		newX = 0.0f;
@@ -23,13 +25,15 @@ public class MovePlayerCube : MonoBehaviour {
 		currentPosition = new Vector3 (0.0f, 0.0f, 0.0f);
 
 		mouseDown = false;
+
+		timeHere = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// when the animation for bringing the player cube up from the bottom is done,
 		// disable the animator (otherwise you can't move the cube)
-		if (Time.time > 1.0f) {
+		if (Time.time - timeHere > 1.0f) {
 			gameObject.GetComponent<Animator>().enabled = false;
 		}
 
