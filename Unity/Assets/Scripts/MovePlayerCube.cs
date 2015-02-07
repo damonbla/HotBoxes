@@ -42,19 +42,18 @@ public class MovePlayerCube : MonoBehaviour {
 			Vector2 touchMovement = Input.GetTouch(0).deltaPosition;
 
 			currentPosition = this.transform.position;
-			newX = currentPosition.x + (touchMovement.x * 0.011f);
-			newY = currentPosition.y + (touchMovement.y * 0.011f);
+			newX = currentPosition.x + (touchMovement.x * 0.07f);
+			newY = currentPosition.y + (touchMovement.y * 0.07f);
 			newZ = currentPosition.z;
 			
 			// don't go off the sides of the screen or above the bar
-			if (newX > -3.9f && newX < 3.9f && newY < -1.3f) {
+			if (newX > -3.9f && newX < 3.9f && newY < -2.3f) {
 				this.transform.position = new Vector3(newX, newY, newZ);
 			}
 		}
 
 
-
-
+		/*
 		// for testing since it's quicker than putting it on the phone
 		if (Input.GetMouseButtonDown(0)) {
 			mouseDown = true;
@@ -74,9 +73,10 @@ public class MovePlayerCube : MonoBehaviour {
 			newZ = currentPosition.z;
 			
 			// don't go off the sides of the screen or above the bar
-			if (newX > -3.9f && newX < 3.9f && newY < -1.3f) {
+			if (newX > -3.9f && newX < 3.9f && newY < -2.3f) {
 				transform.position = new Vector3(newX, newY, newZ);
 			}
 		}
+		*/
 	}
 }
