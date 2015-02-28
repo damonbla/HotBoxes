@@ -7,6 +7,9 @@ public class VariableControl : MonoBehaviour {
 	public int level;
 	public int totalStarCubes;
 
+	// are we playing on the phone or in Unity?
+	public bool onPhone;
+
 	// Use this for initialization
 	void Start () {
 	

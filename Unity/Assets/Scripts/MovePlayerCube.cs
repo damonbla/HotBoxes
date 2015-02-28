@@ -14,7 +14,11 @@ public class MovePlayerCube : MonoBehaviour {
 	// is the mouse button down?
 	private bool mouseDown;
 
+	// keep a local time for animation purposes
 	private float timeHere;
+
+	// the variables
+	private VariableControl variables;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +31,9 @@ public class MovePlayerCube : MonoBehaviour {
 		mouseDown = false;
 
 		timeHere = Time.time;
+
+		// load the variables
+        variables = GameObject.Find("VariableControl").GetComponent<VariableControl>();
 	}
 	
 	// Update is called once per frame
@@ -37,46 +44,47 @@ public class MovePlayerCube : MonoBehaviour {
 			gameObject.GetComponent<Animator>().enabled = false;
 		}
 
-		if (Input.touchCount > 0) {
-			// a finger is on the screen
-			Vector2 touchMovement = Input.GetTouch(0).deltaPosition;
+		if (variables.onPhone) {
+			if (Input.touchCount > 0) {
+				// a finger is on the screen
+				Vector2 touchMovement = Input.GetTouch(0).deltaPosition;
 
-			currentPosition = this.transform.position;
-			newX = currentPosition.x + (touchMovement.x * 0.07f);
-			newY = currentPosition.y + (touchMovement.y * 0.07f);
-			newZ = currentPosition.z;
-			
-			// don't go off the sides of the screen or above the bar
-			if (newX > -3.9f && newX < 3.9f && newY < -2.3f) {
-				this.transform.position = new Vector3(newX, newY, newZ);
+				currentPosition = this.transform.position;
+				newX = currentPosition.x + (touchMovement.x * 0.07f);
+				newY = currentPosition.y + (touchMovement.y * 0.07f);
+				newZ = currentPosition.z;
+				
+				// don't go off the sides of the screen or above the bar
+				if (newX > -3.9f && newX < 3.9f && newY < -2.3f) {
+					this.transform.position = new Vector3(newX, newY, newZ);
+				}
 			}
 		}
 
-
-		/*
 		// for testing since it's quicker than putting it on the phone
-		if (Input.GetMouseButtonDown(0)) {
-			mouseDown = true;
-		}
+		if (!variables.onPhone) {
+			if (Input.GetMouseButtonDown(0)) {
+				mouseDown = true;
+			}
 
-		if (Input.GetMouseButtonUp (0)) {
-			mouseDown = false;
-		}
+			if (Input.GetMouseButtonUp (0)) {
+				mouseDown = false;
+			}
 
-		if (mouseDown) {
-			float xMovement = Input.GetAxis ("Mouse X");
-			float yMovement = Input.GetAxis ("Mouse Y");
+			if (mouseDown) {
+				float xMovement = Input.GetAxis ("Mouse X");
+				float yMovement = Input.GetAxis ("Mouse Y");
 
-			currentPosition = this.transform.position;
-			newX = currentPosition.x + xMovement;
-			newY = currentPosition.y + yMovement;
-			newZ = currentPosition.z;
-			
-			// don't go off the sides of the screen or above the bar
-			if (newX > -3.9f && newX < 3.9f && newY < -2.3f) {
-				transform.position = new Vector3(newX, newY, newZ);
+				currentPosition = this.transform.position;
+				newX = currentPosition.x + xMovement;
+				newY = currentPosition.y + yMovement;
+				newZ = currentPosition.z;
+				
+				// don't go off the sides of the screen or above the bar
+				if (newX > -3.9f && newX < 3.9f && newY < -2.3f) {
+					transform.position = new Vector3(newX, newY, newZ);
+				}
 			}
 		}
-		*/
 	}
 }

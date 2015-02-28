@@ -5,7 +5,11 @@ public class BoxDrop : MonoBehaviour {
 
 	public Color boxColor;
 	public float colorChangeAmount;
-	bool onPlayer;
+	private bool onPlayer;
+
+	// keep track of the Y position for the push up (to remove the sticky joint)
+	private float lastY;
+	private float nowY;
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +17,9 @@ public class BoxDrop : MonoBehaviour {
 		renderer.material.color = boxColor;
 
 		onPlayer = false;
+
+		nowY = 0.0f;
+		lastY = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -40,6 +47,16 @@ public class BoxDrop : MonoBehaviour {
 				boxColor.b -= colorChangeAmount;
 			}
 			renderer.material.color = boxColor;
+
+			// check the upwards velocity, and if it's enough, let the falling cube go
+			nowY = transform.position.y;
+			if (nowY - lastY > 0.07f) {
+				Destroy(gameObject.GetComponent<FixedJoint>());
+			}
+
+			// reset lastY
+			lastY = nowY;
+
 		} else {
 			// gain some green and blue, making the box less red
 			if (boxColor.g < 1.0) {
@@ -53,11 +70,22 @@ public class BoxDrop : MonoBehaviour {
 	}
 
 	// if the box is resting on the player's cube, start making it more red
-	void OnCollisionEnter() {
-		onPlayer = true;
+	void OnCollisionEnter(Collision collision) {
+		if (collision.gameObject.name == "Player Cube") {
+			onPlayer = true;
+
+			// need the box to "stick" to the player cube on contact
+			FixedJoint joint = gameObject.AddComponent<FixedJoint>();
+			joint.connectedBody = collision.rigidbody;
+		}
 	}
 
-	void OnCollisionExit() {
-		onPlayer = false;
+	/*
+	void OnCollisionExit(Collision collision) {
+		if (collision.gameObject.name == "Player Cube") {
+			onPlayer = false;
+			Debug.Log("UNCollided");
+		}
 	}
+	*/
 }
