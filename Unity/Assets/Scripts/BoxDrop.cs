@@ -52,6 +52,7 @@ public class BoxDrop : MonoBehaviour {
 			nowY = transform.position.y;
 			if (nowY - lastY > 0.07f) {
 				Destroy(gameObject.GetComponent<FixedJoint>());
+				onPlayer = false;
 			}
 
 			// reset lastY
@@ -75,8 +76,8 @@ public class BoxDrop : MonoBehaviour {
 			onPlayer = true;
 
 			// need the box to "stick" to the player cube on contact
-			FixedJoint joint = gameObject.AddComponent<FixedJoint>();
-			joint.connectedBody = collision.rigidbody;
+			//FixedJoint joint = gameObject.AddComponent<FixedJoint>();
+			//joint.connectedBody = collision.rigidbody;
 		}
 	}
 

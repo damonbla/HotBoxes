@@ -5659,7 +5659,7 @@ MonoBehaviour:
   score: 0
   level: 0
   totalStarCubes: 0
-  onPhone: 1
+  onPhone: 0
 --- !u!4 &1984235717
 Transform:
   m_ObjectHideFlags: 0
