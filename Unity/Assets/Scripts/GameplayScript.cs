@@ -7,6 +7,9 @@ public class GameplayScript : MonoBehaviour {
 	public GameObject backgroundCube;
 	private GameObject[,] backgroundCubes = new GameObject[7,11];
 
+	// indicator arrows for when dropping cube goes above the top of the screen
+	public GameObject indicatorArrow;
+
 	private VariableControl variables;
 
 	// Use this for initialization
@@ -25,10 +28,15 @@ public class GameplayScript : MonoBehaviour {
 				backgroundCubes[x,y].GetComponent<BackgroundCubeMove>().zAdjustment = 0.0f;
 			}
 		}
+
+		indicatorArrow = (GameObject)Instantiate (indicatorArrow, new Vector3 (0.0f, 0.0f, 0.0f), Quaternion.identity);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		// get the indicator arrows on the screen
+		// need to get them in the right place: based on the x value of the dropping cube
+		float dropX = GameObject.Find ("Dropping Box").transform.position.x;
+		indicatorArrow.transform.position = new Vector3 (dropX, 0.0f, 0.0f);
 	}
 }
