@@ -14,7 +14,7 @@ public class BoxDrop : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// color set in UI
-		renderer.material.color = boxColor;
+		GetComponent<Renderer>().material.color = boxColor;
 
 		onPlayer = false;
 
@@ -27,14 +27,14 @@ public class BoxDrop : MonoBehaviour {
 		// move it back up above the screen if it falls below the screen
 		if (transform.position.y < -10.0f) {
 			// reset physics stuff
-			rigidbody.velocity = Vector3.zero;
-			rigidbody.angularVelocity = Vector3.zero;
+			GetComponent<Rigidbody>().velocity = Vector3.zero;
+			GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
 			// reset position and rotation
 			transform.rotation = Quaternion.identity;
 			transform.position = new Vector3(0.0f, 12.0f, 0.0f);
 
-			renderer.material.color = new Color(1.0f, 1.0f, 1.0f);
+			GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f);
 		}
 
 
@@ -46,7 +46,7 @@ public class BoxDrop : MonoBehaviour {
 			if (boxColor.b > 0.0) {
 				boxColor.b -= colorChangeAmount;
 			}
-			renderer.material.color = boxColor;
+			GetComponent<Renderer>().material.color = boxColor;
 
 			// check the upwards velocity, and if it's enough, let the falling cube go
 			nowY = transform.position.y;
@@ -66,7 +66,7 @@ public class BoxDrop : MonoBehaviour {
 			if (boxColor.b < 1.0) {
 				boxColor.b += colorChangeAmount;
 			}
-			renderer.material.color = boxColor;
+			GetComponent<Renderer>().material.color = boxColor;
 		}
 	}
 

@@ -15,7 +15,7 @@ public class FogNoise : MonoBehaviour {
     void Start() {
         noiseTex = new Texture2D(pixWidth, pixHeight);
         pix = new Color[noiseTex.width * noiseTex.height];
-        renderer.material.mainTexture = noiseTex;
+        GetComponent<Renderer>().material.mainTexture = noiseTex;
     }
     void CalcNoise() {
         float y = 0.0F;
