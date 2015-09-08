@@ -9,6 +9,7 @@ public class GameplayScript : MonoBehaviour {
 
 	// indicator arrows for when dropping cube goes above the top of the screen
 	public GameObject indicatorArrow;
+	private GameObject indicatorParent;
 
 	private VariableControl variables;
 
@@ -29,7 +30,13 @@ public class GameplayScript : MonoBehaviour {
 			}
 		}
 
+		indicatorParent = new GameObject();
+		Vector3 parentPos = new Vector3(0.0f, 0.0f, 0.0f);
+
+		indicatorParent.transform.position = parentPos;
 		indicatorArrow = (GameObject)Instantiate (indicatorArrow, new Vector3 (0.0f, 0.0f, 0.0f), Quaternion.identity);
+
+		indicatorArrow.transform.parent = indicatorParent.transform;
 	}
 	
 	// Update is called once per frame
@@ -37,6 +44,7 @@ public class GameplayScript : MonoBehaviour {
 		// get the indicator arrows on the screen
 		// need to get them in the right place: based on the x value of the dropping cube
 		float dropX = GameObject.Find ("Dropping Box").transform.position.x;
-		indicatorArrow.transform.position = new Vector3 (dropX, 0.0f, 0.0f);
+		indicatorParent.transform.position = new Vector3 (dropX, 6.8f, 0.0f);
 	}
+
 }
