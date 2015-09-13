@@ -13,7 +13,6 @@ public class VariableControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		score = 0;
-		level = 0;
 	}
 	
 	// Update is called once per frame

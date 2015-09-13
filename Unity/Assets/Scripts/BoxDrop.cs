@@ -10,7 +10,24 @@ public class BoxDrop : MonoBehaviour {
 	// keep track of the Y position for the push up (to remove the sticky joint)
 	private float lastY;
 	private float nowY;
-
+	
+	// explosion particles
+	public ParticleSystem explosion;
+	
+	// reset the dropping cube
+	void resetCube() {
+		// reset physics stuff
+		GetComponent<Rigidbody>().velocity = Vector3.zero;
+		GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+		
+		// reset position and rotation
+		transform.rotation = Quaternion.identity;
+		transform.position = new Vector3(0.0f, 12.0f, 0.0f);
+		
+		GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f);
+	}
+	
+	
 	// Use this for initialization
 	void Start () {
 		// color set in UI
@@ -20,35 +37,39 @@ public class BoxDrop : MonoBehaviour {
 
 		nowY = 0.0f;
 		lastY = 0.0f;
+		
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// move it back up above the screen if it falls below the screen
 		if (transform.position.y < -10.0f) {
-			// reset physics stuff
-			GetComponent<Rigidbody>().velocity = Vector3.zero;
-			GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-
-			// reset position and rotation
-			transform.rotation = Quaternion.identity;
-			transform.position = new Vector3(0.0f, 12.0f, 0.0f);
-
-			GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f);
+			resetCube();
 		}
 
 
 		if (onPlayer) {
 			// lose some green and blue, making the box redder
-			if (boxColor.g > 0.0) {
+			if (boxColor.g > 0.0f) {
 				boxColor.g -= colorChangeAmount;
 			}
-			if (boxColor.b > 0.0) {
+			if (boxColor.b > 0.0f) {
 				boxColor.b -= colorChangeAmount;
 			}
 			GetComponent<Renderer>().material.color = boxColor;
 
+
+			// if it's totally red, BOOM
+			if (boxColor.g <= 0.0f && boxColor.b <= 0.0f) {
+				ParticleSystem newParticleSystem = Instantiate(explosion, gameObject.transform.position, Quaternion.identity) as ParticleSystem;
+				Destroy(newParticleSystem.gameObject, newParticleSystem.startLifetime);
+				resetCube();
+			}
+
+
 			// check the upwards velocity, and if it's enough, let the falling cube go
+			/*
 			nowY = transform.position.y;
 			if (nowY - lastY > 0.07f) {
 				Destroy(gameObject.GetComponent<FixedJoint>());
@@ -57,6 +78,7 @@ public class BoxDrop : MonoBehaviour {
 
 			// reset lastY
 			lastY = nowY;
+			*/
 
 		} else {
 			// gain some green and blue, making the box less red

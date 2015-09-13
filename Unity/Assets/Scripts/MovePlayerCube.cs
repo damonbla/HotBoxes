@@ -40,9 +40,9 @@ public class MovePlayerCube : MonoBehaviour {
 	void Update () {
 		// when the animation for bringing the player cube up from the bottom is done,
 		// disable the animator (otherwise you can't move the cube)
-		if (Time.time - timeHere > 1.0f) {
-			gameObject.GetComponent<Animator>().enabled = false;
-		}
+		//if (Time.time - timeHere > 1.0f) {
+		//	gameObject.GetComponent<Animator>().enabled = false;
+		//}
 
 		if (variables.onPhone) {
 			if (Input.touchCount > 0) {
