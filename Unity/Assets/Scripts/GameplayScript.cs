@@ -47,11 +47,16 @@ public class GameplayScript : MonoBehaviour {
 		indicatorArrow.transform.parent = indicatorParent.transform;
 		indicatorArrow.SetActive(false);
 		indicatorActive = false;
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// get the indicator arrows on the screen
+		
+	
+	
+		// get the indicator arrows on the screen if the falling cube goes too high
 		// need them to be in the right place: based on the x value of the dropping cube
 		if (GameObject.Find ("Dropping Box").transform.position.y > 8.0f) {
 			if (!indicatorActive) {

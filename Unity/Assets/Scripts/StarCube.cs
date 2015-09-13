@@ -35,6 +35,9 @@ public class StarCube : MonoBehaviour {
 
 			Debug.Log("total star cubes = " + variables.totalStarCubes);
 
+			variables.score += 10;
+			GameObject.Find ("Score Number").GetComponent<TextMesh>().text = variables.score.ToString();
+
 			starDone = true;
 		}
 	}
