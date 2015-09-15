@@ -11,9 +11,6 @@ public class BoxDrop : MonoBehaviour {
 	//private float lastY;
 	//private float nowY;
 	
-	// explosion particles
-	//public ParticleSystem explosion;
-	
 	// reset the dropping cube
 	void resetCube() {
 		// reset physics stuff
@@ -24,7 +21,6 @@ public class BoxDrop : MonoBehaviour {
 		transform.rotation = Quaternion.identity;
 		transform.position = new Vector3(0.0f, 12.0f, 0.0f);
 		
-		//GetComponent<Renderer>().material.color = Color.white;
 		boxColor = Color.white;
 	}
 	
