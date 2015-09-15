@@ -8,11 +8,11 @@ public class BoxDrop : MonoBehaviour {
 	private bool onPlayer;
 
 	// keep track of the Y position for the push up (to remove the sticky joint)
-	private float lastY;
-	private float nowY;
+	//private float lastY;
+	//private float nowY;
 	
 	// explosion particles
-	public ParticleSystem explosion;
+	//public ParticleSystem explosion;
 	
 	// reset the dropping cube
 	void resetCube() {
@@ -24,7 +24,8 @@ public class BoxDrop : MonoBehaviour {
 		transform.rotation = Quaternion.identity;
 		transform.position = new Vector3(0.0f, 12.0f, 0.0f);
 		
-		GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f);
+		//GetComponent<Renderer>().material.color = Color.white;
+		boxColor = Color.white;
 	}
 	
 	
@@ -35,10 +36,8 @@ public class BoxDrop : MonoBehaviour {
 
 		onPlayer = false;
 
-		nowY = 0.0f;
-		lastY = 0.0f;
-		
-		
+		//nowY = 0.0f;
+		//lastY = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -62,8 +61,7 @@ public class BoxDrop : MonoBehaviour {
 
 			// if it's totally red, BOOM
 			if (boxColor.g <= 0.0f && boxColor.b <= 0.0f) {
-				ParticleSystem newParticleSystem = Instantiate(explosion, gameObject.transform.position, Quaternion.identity) as ParticleSystem;
-				Destroy(newParticleSystem.gameObject, newParticleSystem.startLifetime);
+				ParticleHelper.Instance.explode (gameObject.transform.position);
 				resetCube();
 			}
 
@@ -103,12 +101,11 @@ public class BoxDrop : MonoBehaviour {
 		}
 	}
 
-	/*
+	
 	void OnCollisionExit(Collision collision) {
 		if (collision.gameObject.name == "Player Cube") {
 			onPlayer = false;
-			Debug.Log("UNCollided");
 		}
 	}
-	*/
+
 }

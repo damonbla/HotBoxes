@@ -15,7 +15,7 @@ public class MovePlayerCube : MonoBehaviour {
 	private bool mouseDown;
 
 	// keep a local time for animation purposes
-	private float timeHere;
+	//private float timeHere;
 
 	// the variables
 	private VariableControl variables;
@@ -30,7 +30,7 @@ public class MovePlayerCube : MonoBehaviour {
 
 		mouseDown = false;
 
-		timeHere = Time.time;
+		//timeHere = Time.time;
 
 		// load the variables
         variables = GameObject.Find("VariableControl").GetComponent<VariableControl>();

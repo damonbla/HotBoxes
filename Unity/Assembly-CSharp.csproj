@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\FogNoise.cs" />
      <Compile Include="Assets\Scripts\GameplayScript.cs" />
      <Compile Include="Assets\Scripts\MovePlayerCube.cs" />
+     <Compile Include="Assets\Scripts\ParticleHelper.cs" />
      <Compile Include="Assets\Scripts\StarCube.cs" />
      <Compile Include="Assets\Scripts\StartScript.cs" />
      <Compile Include="Assets\Scripts\VariableControl.cs" />
